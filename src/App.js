@@ -10,7 +10,6 @@ import MenuItem from '@mui/material/MenuItem';
 import GoogleIcon from '@mui/icons-material/Google';
 import Typography from '@mui/material/Typography';
 import LinearProgress from '@mui/material/LinearProgress';
-import FormHelperText from '@mui/material/FormHelperText';
 import './App.css';
 
 var results;
@@ -38,9 +37,6 @@ function App() {
   const [mapURL, setMapURL] = React.useState('');
   const [noOfPages, setNoOfPages] = React.useState(1);
 
-
-  const fileName = 'exported';
-  const exportType =  exportFromJSON.types.csv;
 
   const handleChange = (event) => {
     setFileType(event.target.value);
@@ -78,7 +74,7 @@ function App() {
 
   async function getData() {
     setLoading(true);
-    results = await axios.post('https://server-scrape-google-maps.herokuapp.com/', {
+    results = await axios.post('http://3.108.224.150:4000/', {
       mapURL: mapURL,
       noOfPages: noOfPages
     });
